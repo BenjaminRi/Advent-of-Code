@@ -1,0 +1,4 @@
+- First number x is the number of child nodes
+- Second number y is the number of data entries
+- Then come x child nodes, with the same format, recursively
+- Then come y data entries
