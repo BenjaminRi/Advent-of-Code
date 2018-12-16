@@ -1,6 +1,7 @@
 #include <iostream>
 //#include <iomanip>
 #include <vector>
+#include <climits>
 
 struct Point{
 	int x;
@@ -28,7 +29,7 @@ int main(int argc, char* argv[]){
 	if(stars.empty()) return 1;
 	
 	int t = 0;
-	unsigned long long last_area = (-1);//underflow to assign ULLONG_MAX
+	int last_width = INT_MAX;
 	while(++t < 1000000){//limit time to prevent infinite loop
 		int min_x = stars[0].x + stars[0].v_x;
 		int min_y = stars[0].y + stars[0].v_y;
@@ -43,13 +44,13 @@ int main(int argc, char* argv[]){
 			if(stars[i].y > max_y) max_y = stars[i].y;
 		}
 		
-		unsigned long long area = (unsigned long long) (max_x - min_x) * (unsigned long long) (max_y - min_y);
-		if(area > last_area){
+		int width = (max_x - min_x);
+		if(width > last_width){
 			const int final_time = t - 1;
 			std::cout << final_time << std::endl;
 			break;
 		}
-		last_area = area;
+		last_width = width;
 	}
 	
 	return 0;
